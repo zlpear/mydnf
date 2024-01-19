@@ -1,0 +1,19 @@
+#mybatis.mapper-locations=classpath:mappers/*xml
+#mybatis.type-aliases-package=org.zwj.mydnf.mybatis.entity
+
+server:
+  port: 8090
+  servlet:
+    context-path: /dnfapi
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydnf?serverTimezone=Asia/Shanghai
+    username: root
+    password: 12345678
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #开启SQL语句打印
