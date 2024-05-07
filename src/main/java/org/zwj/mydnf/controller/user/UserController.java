@@ -20,43 +20,43 @@ public class UserController {
 
     @GetMapping("/")
     public ResultVO<List<User>> getUserList() {
-        return ResultVO.success(iUserService.users());
+        return ResultVO.success(iUserService.list());
     }
 
     @GetMapping("/page")
     public ResultVO<Page<User>> getUserPage(Page<User> page) {
-        return ResultVO.success(iUserService.users(page));
+        return ResultVO.success(iUserService.page(page));
     }
 
     @GetMapping("/{id}")
     public ResultVO<User> getUser(@PathVariable Long id) {
-        return ResultVO.success(iUserService.getUserById(id));
+        return ResultVO.success(iUserService.get(id));
     }
 
     @PostMapping("/")
     public ResultVO addUser(@RequestBody User user) {
-        iUserService.addUser(user);
+        iUserService.insert(user);
         return ResultVO.success();
     }
 
     @PutMapping("/")
     public ResultVO updateUser(@RequestBody User user) {
-        iUserService.updateUser(user);
+        iUserService.update(user);
         return ResultVO.success();
     }
 
     @PostMapping("/uploadAvatar")
     public ResultVO uploadAvatar(@RequestParam(required = false) MultipartFile file, @RequestParam(required = false) Long id) throws IOException {
-        User user = iUserService.getUserById(id);
+        User user = iUserService.get(id);
         user.setAvatar(file.getBytes());
-        iUserService.updateUser(user);
+        iUserService.update(user);
         return ResultVO.success();
     }
 
 
     @DeleteMapping("/{id}")
     public ResultVO deleteUser(@PathVariable Long id) {
-        iUserService.deleteUser(id);
+        iUserService.delete(id);
         return ResultVO.success();
     }
 

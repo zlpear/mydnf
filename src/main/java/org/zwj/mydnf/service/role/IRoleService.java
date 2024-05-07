@@ -1,23 +1,17 @@
 package org.zwj.mydnf.service.role;
 
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
+import org.zwj.mydnf.controller.role.request.RolePageRequest;
 import org.zwj.mydnf.entity.Role;
-import org.zwj.mydnf.entity.User;
+import org.zwj.mydnf.vo.role.RoleVo;
 
 import java.util.List;
 
-public interface IRoleService {
+public interface IRoleService extends IService<Role> {
 
-    List<Role> roles();
+    List<RoleVo> getRoleList();
 
-    Page<Role> roles(Page<Role> page);
-
-    Role getRoleById(Long id);
-
-    void addRole(Role role);
-
-    void updateRole(Role role);
-
-    int deleteRole(Long id);
+    IPage<RoleVo> getRolePage(RolePageRequest request);
 
 }
