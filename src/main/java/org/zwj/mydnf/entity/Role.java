@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Role {
 
@@ -15,8 +17,8 @@ public class Role {
     private byte[] avatar;
     private Long userId;
     private Integer status; // 1:正常 0:隐藏
-    private String createTime;
-    private String updateTime;
+    private Date createTime;
+    private Date updateTime;
 
 
 }
